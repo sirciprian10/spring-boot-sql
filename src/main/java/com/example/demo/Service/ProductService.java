@@ -28,6 +28,7 @@ public class ProductService {
 
             return productRepository.findById(id).get();
 
+
     }
 
     public Product createProduct(Product product) {
@@ -56,9 +57,10 @@ public class ProductService {
         product.setDescription(updatedProduct.getDescription());
         product.setPrice(updatedProduct.getPrice());
         return productRepository.save(product);
+
     }
 
-    public void deleteProduct(Long id) {
+    public String deleteProduct(Long id) {
 
 
         if(productRepository.findById(id).isEmpty()){
@@ -66,7 +68,8 @@ public class ProductService {
                     "There is no product with the id that you entered");
         }
 
-            productRepository.deleteById(id);
+          productRepository.deleteById(id);
+         return "Success";
 
         }
 
